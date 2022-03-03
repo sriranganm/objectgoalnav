@@ -8,6 +8,8 @@ import time
 import random
 import os
 import platform
+import math
+import numpy as np
 
 try:
     from queue import Queue
@@ -827,6 +829,16 @@ class OfflineControllerWithSmallRotation(BaseController):
             return objId in visible_objects
         else:
             return str(self.state) in self.metadata[objId]
+
+    def get_object_dist(self, objId):
+        keys = self.get_objbb().keys()
+        object_id = objId.split('|')[0]
+        if(objId in keys):
+            depth_frame = self.depth[str(self.state)]
+            x1, y1, x2, y2 = self.get_objbb()[objId][0]
+            box_based_avg_depth = np.mean(depth_frame[y1:y2,x1:x2])
+            return box_based_avg_depth
+        return math.inf
 
     #mark1
     def objType_is_visible(self, objType):

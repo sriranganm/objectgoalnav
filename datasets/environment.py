@@ -75,7 +75,10 @@ class Environment:
             if(objId in keys):
                 depth_image = self.event.depth_frame
                 x1, y1, x2, y2 = self.last_event.class_detections2D[objId][0]
-                box_based_avg_depth = np.mean(depth_image[y1:y2,x1:x2])
+                crop = depth_image[y1:y2,x1:x2]
+                if (crop.size == 0):
+                    return math.inf
+                box_based_avg_depth = np.mean(crop)
                 return box_based_avg_depth
             else:
                 return math.inf

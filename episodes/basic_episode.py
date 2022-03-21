@@ -15,6 +15,7 @@ from .episode import Episode
 from utils import flag_parser
 
 import json
+import pickle
 
 c2p_prob = json.load(open("./data/c2p_prob.json"))
 args = flag_parser.parse_arguments()
@@ -142,6 +143,8 @@ class BasicEpisode(Episode):
         reward = STEP_PENALTY
         reward_dict = {}
         distance_dict = {}
+        with open('largest_dist.pkl', 'rb') as f:
+            curr_largest_dist = pickle.load(f)
         if self.target_parents is not None:
             for parent_type in self.target_parents:
                 parent_ids = self.environment.find_id(parent_type)
@@ -154,9 +157,15 @@ class BasicEpisode(Episode):
             k = list(reward_dict.keys())
             c2p_prob_max = max(v)           #pick one with greatest reward if multiple in scene
             dist = distance_dict[k[v.index(c2p_prob_max)]]
-            if (dist <= 1.5):
-                self.seen_list.append(k[v.index(c2p_prob_max)])
-            reward = c2p_prob_max*math.exp(-dist)
+            if (dist != math.inf):
+                if (dist <= 1.0):
+                    self.seen_list.append(k[v.index(c2p_prob_max)])
+                    reward = c2p_prob_max
+                else:
+                    reward = c2p_prob_max* max(((-0.15*(dist-1))+1), 0.0)
+                if (dist > curr_largest_dist):
+                    with open('largest_dist.pkl', 'wb') as f:
+                        pickle.dump(dist, f)
         return reward
 
     def _new_episode(

@@ -131,7 +131,7 @@ def parse_arguments():
         help="If true, output will contain more information.",
     )
     parser.add_argument(
-        "--max_ep", type=float, default=6000000, help="maximum # of episodes"
+        "--max_ep", type=float, default=1500000, help="maximum # of episodes"
     )
 
     parser.add_argument("--model", type=str, default="BaseModel", help="Model to use.")
@@ -204,7 +204,8 @@ def parse_arguments():
     parser.add_argument(
         "--offline_data_dir",
         type=str,
-        default="./data/thor_v1_offline_data", #thor_offline_data
+        #default="./data/thor_v1_offline_data", #thor_offline_data
+        default="/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v1_offline_data/", #thor_offline_data
         help="where dataset is stored.",
     )
     parser.add_argument(

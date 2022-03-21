@@ -544,6 +544,7 @@ class OfflineControllerWithSmallRotation(BaseController):
         # metadata_file_name='metadata.json',
         images_file_name="images.hdf5",
         objbb_file_name = "objects_bb.json",
+        depth_file_name = "depth.hdf5",
         debug_mode=True,
         actions=["MoveAhead", "RotateLeft", "RotateRight", "LookUp", "LookDown"],
         visualize=True,
@@ -558,6 +559,7 @@ class OfflineControllerWithSmallRotation(BaseController):
         self.metadata_file_name = metadata_file_name
         self.images_file_name = images_file_name
         self.objbb_file_name = objbb_file_name
+        self.depth_file_name = depth_file_name
         self.grid = None
         self.graph = None
         self.metadata = None
@@ -572,6 +574,7 @@ class OfflineControllerWithSmallRotation(BaseController):
         self.debug_mode = debug_mode
         self.fov = fov
         self.curr_objs = None
+        self.depth = None
 
         self.local_executable_path = local_executable_path
 
@@ -651,6 +654,15 @@ class OfflineControllerWithSmallRotation(BaseController):
             self.images = self.h5py.File(
                 os.path.join(
                     self.offline_data_dir, self.scene_name, self.images_file_name
+                ),
+                "r",
+            )
+
+            if self.depth is not None:
+                self.depth.close()
+            self.depth = self.h5py.File(
+                os.path.join(
+                    self.offline_data_dir, self.scene_name, self.depth_file_name
                 ),
                 "r",
             )
@@ -831,12 +843,15 @@ class OfflineControllerWithSmallRotation(BaseController):
             return str(self.state) in self.metadata[objId]
 
     def get_object_dist(self, objId):
-        keys = self.get_objbb().keys()
+        keys = list(self.get_objbb().keys())
         object_id = objId.split('|')[0]
-        if(objId in keys):
+        if(object_id in keys):
             depth_frame = self.depth[str(self.state)]
-            x1, y1, x2, y2 = self.get_objbb()[objId][0]
-            box_based_avg_depth = np.mean(depth_frame[y1:y2,x1:x2])
+            x1, y1, x2, y2 = self.get_objbb()[object_id][0:4]
+            crop = depth_frame[y1:y2,x1:x2]
+            if (crop.size == 0):
+                return math.inf
+            box_based_avg_depth = np.mean(crop)/1000
             return box_based_avg_depth
         return math.inf
 

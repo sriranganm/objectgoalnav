@@ -44,6 +44,7 @@ class BasicEpisode(Episode):
         self.scene_states = []
         self.partial_reward = args.partial_reward
         self.seen_list = []
+        self.seen_dist_dict = {}
         if args.eval:
             random.seed(args.seed)
         self.room = None
@@ -143,29 +144,27 @@ class BasicEpisode(Episode):
         reward = STEP_PENALTY
         reward_dict = {}
         distance_dict = {}
-        with open('largest_dist.pkl', 'rb') as f:
-            curr_largest_dist = pickle.load(f)
         if self.target_parents is not None:
             for parent_type in self.target_parents:
                 parent_ids = self.environment.find_id(parent_type)
                 for parent_id in parent_ids:
-                    if parent_id not in self.seen_list:
-                        distance_dict[parent_id] = self.environment.get_object_dist(parent_id)
+                    parent_dist = self.environment.get_object_dist(parent_id)
+                    if parent_id not in self.seen_list and parent_dist < self.seen_dist_dict.get(parent_type.strip(), math.inf):
+                        distance_dict[parent_id] = parent_dist
                         reward_dict[parent_id] = self.target_parents[parent_type]
         if len(reward_dict) != 0:
             v = list(reward_dict.values())
             k = list(reward_dict.keys())
-            c2p_prob_max = max(v)           #pick one with greatest reward if multiple in scene
-            dist = distance_dict[k[v.index(c2p_prob_max)]]
-            if (dist != math.inf):
-                if (dist <= 1.0):
-                    self.seen_list.append(k[v.index(c2p_prob_max)])
-                    reward = c2p_prob_max
-                else:
-                    reward = c2p_prob_max* max(((-0.15*(dist-1))+1), 0.0)
-                if (dist > curr_largest_dist):
-                    with open('largest_dist.pkl', 'wb') as f:
-                        pickle.dump(dist, f)
+            reward = max(v)           #pick one with greatest reward if multiple in scene
+            max_reward = max(v)
+            best_parent_obj = k[v.index(reward)]
+            dist = distance_dict[best_parent_obj]
+            if (dist <= 1.0):
+                self.seen_list.append(best_parent_obj)
+            else:
+                reward = reward*max(((-0.15*(dist-1))+1), 0.0)
+                parent_type = best_parent_obj.split('|')[0]
+                self.seen_dist_dict[parent_type.strip()] = dist
         return reward
 
     def _new_episode(

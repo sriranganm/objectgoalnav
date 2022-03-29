@@ -83,6 +83,15 @@ def main():
         ), "The model is None but agent is not random agent"
         optimizer = None
 
+
+    if (args.load_model is not None):
+        print("Loading saved model")
+        checkpoint = torch.load(args.load_model)
+        shared_model.load_state_dict(checkpoint['state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer'])
+        train_total_ep = checkpoint['epoch']
+        print('Previous training epochs: ', train_total_ep)
+
     processes = []
 
     end_flag = mp.Value(ctypes.c_bool, False)

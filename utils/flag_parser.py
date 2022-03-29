@@ -71,7 +71,7 @@ def parse_arguments():
         help="use an optimizer with shared statistics.",
     )
     parser.add_argument(
-        "--load_model", type=str, default="", help="Path to load a saved model."
+        "--load_model", type=str, default=None, help="Path to load a saved model."
     )
 
     parser.add_argument(

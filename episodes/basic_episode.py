@@ -115,9 +115,11 @@ class BasicEpisode(Episode):
                     action_was_successful = True
                     if self.partial_reward:
                         self.seen_list = []
+                        self.seen_dist_dict = {}
                         reward += self.get_partial_reward()
                     break
             self.seen_list = []
+            self.seen_dist_dict = {}
 
             if args.vis:
                 print("Success:", action_was_successful)
@@ -144,12 +146,21 @@ class BasicEpisode(Episode):
         reward = STEP_PENALTY
         reward_dict = {}
         distance_dict = {}
+        if self.target_object is not None:
+            target_ids = self.environment.find_id(self.target_object)
+            target_dist = self.environment.get_object_dist(target_ids[0])
+            if target_dist < self.seen_dist_dict.get(target_ids[0], math.inf):
+                reward = 0.1*GOAL_SUCCESS_REWARD*max(((-0.15*(target_dist-1))+1), 0.0)
+                self.seen_dist_dict[target_ids[0]] = target_dist
+                print(self.target_object, target_ids[0], reward)
+                return reward
+
         if self.target_parents is not None:
             for parent_type in self.target_parents:
                 parent_ids = self.environment.find_id(parent_type)
                 for parent_id in parent_ids:
                     parent_dist = self.environment.get_object_dist(parent_id)
-                    if parent_id not in self.seen_list and parent_dist < self.seen_dist_dict.get(parent_type.strip(), math.inf):
+                    if parent_id not in self.seen_list and parent_dist < self.seen_dist_dict.get(parent_id, math.inf):
                         distance_dict[parent_id] = parent_dist
                         reward_dict[parent_id] = self.target_parents[parent_type]
         if len(reward_dict) != 0:
@@ -163,8 +174,8 @@ class BasicEpisode(Episode):
                 self.seen_list.append(best_parent_obj)
             else:
                 reward = reward*max(((-0.15*(dist-1))+1), 0.0)
-                parent_type = best_parent_obj.split('|')[0]
-                self.seen_dist_dict[parent_type.strip()] = dist
+                self.seen_dist_dict[best_parent_obj] = dist
+                print(best_parent_obj, reward)
         return reward
 
     def _new_episode(

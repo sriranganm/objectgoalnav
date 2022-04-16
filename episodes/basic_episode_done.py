@@ -145,22 +145,37 @@ class BasicEpisode(Episode):
         """ get partial reward if parent object is seen for the first time"""
         reward = STEP_PENALTY
         reward_dict = {}
-        distance_dict = {}
+        k_dict = {}
+        if self.target_object is not None:
+            target_ids = self.environment.find_id(self.target_object)
+            target_bb_size = self.environment.get_object_bb_size(target_ids[0])
+            if target_bb_size > self.seen_bb_size_dict.get(target_ids[0], 1.0):
+                reward = 0.1*GOAL_SUCCESS_REWARD*(1-(self.seen_bb_size_dict.get(target_ids[0], 1.0)/target_bb_size))
+                self.seen_bb_size_dict[target_ids[0]] = target_bb_size
+                print("Target ", self.target_object, target_ids[0], target_bb_size, reward)
+                return reward
+
         if self.target_parents is not None:
             for parent_type in self.target_parents:
                 parent_ids = self.environment.find_id(parent_type)
                 for parent_id in parent_ids:
-                    if parent_id not in self.seen_list:
-                        distance_dict[parent_id] = self.environment.get_object_dist(parent_id)
+                    parent_bb_size = self.environment.get_object_bb_size(parent_id)
+                    if parent_id not in self.seen_list and parent_bb_size > self.seen_bb_size_dict.get(parent_id, 1.0):
+                        k_dict[parent_id] = 1- (self.seen_bb_size_dict.get(target_ids[0], 1.0)/parent_bb_size)
+                        self.seen_bb_size_dict[parent_id] = parent_bb_size
                         reward_dict[parent_id] = self.target_parents[parent_type]
         if len(reward_dict) != 0:
             v = list(reward_dict.values())
             k = list(reward_dict.keys())
-            c2p_prob_max = max(v)           #pick one with greatest reward if multiple in scene
-            dist = distance_dict[k[v.index(c2p_prob_max)]]
-            reward = c2p_prob_max*math.exp(-(dist-1.0))
-            if (dist <= 1.0):
-                self.seen_list.append(k[v.index(c2p_prob_max)])
+            reward = max(v)           #pick one with greatest reward if multiple in scene
+            max_reward = max(v)
+            best_parent_obj = k[v.index(reward)]
+            k_factor = k_dict[best_parent_obj]
+            if (self.environment.object_is_visible(best_parent_obj)):
+                self.seen_list.append(best_parent_obj)
+            else:
+                reward = max_reward*k_factor
+                print("Parent", best_parent_obj, reward)
         return reward
 
     def _new_episode(

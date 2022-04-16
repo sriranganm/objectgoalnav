@@ -44,7 +44,7 @@ class BasicEpisode(Episode):
         self.scene_states = []
         self.partial_reward = args.partial_reward
         self.seen_list = []
-        self.seen_dist_dict = {}
+        self.seen_bb_size_dict = {}
         if args.eval:
             random.seed(args.seed)
         self.room = None
@@ -115,11 +115,11 @@ class BasicEpisode(Episode):
                     action_was_successful = True
                     if self.partial_reward:
                         self.seen_list = []
-                        self.seen_dist_dict = {}
+                        self.seen_bb_size_dict = {}
                         reward += self.get_partial_reward()
                     break
             self.seen_list = []
-            self.seen_dist_dict = {}
+            self.seen_bb_size_dict = {}
 
             if args.vis:
                 print("Success:", action_was_successful)
@@ -145,23 +145,24 @@ class BasicEpisode(Episode):
         """ get partial reward if parent object is seen for the first time"""
         reward = STEP_PENALTY
         reward_dict = {}
-        distance_dict = {}
+        k_dict = {}
         if self.target_object is not None:
             target_ids = self.environment.find_id(self.target_object)
-            target_dist = self.environment.get_object_dist(target_ids[0])
-            if target_dist < self.seen_dist_dict.get(target_ids[0], math.inf):
-                reward = 0.1*GOAL_SUCCESS_REWARD*max(((-0.15*(target_dist-1))+1), 0.0)
-                self.seen_dist_dict[target_ids[0]] = target_dist
-                print(self.target_object, target_ids[0], reward)
+            target_bb_size = self.environment.get_object_bb_size(target_ids[0])
+            if target_bb_size > self.seen_bb_size_dict.get(target_ids[0], 1.0):
+                reward = 0.1*GOAL_SUCCESS_REWARD*(1-(self.seen_bb_size_dict.get(target_ids[0], 1.0)/target_bb_size))
+                self.seen_bb_size_dict[target_ids[0]] = target_bb_size
+                print("Target ", self.target_object, target_ids[0], target_bb_size, reward)
                 return reward
 
         if self.target_parents is not None:
             for parent_type in self.target_parents:
                 parent_ids = self.environment.find_id(parent_type)
                 for parent_id in parent_ids:
-                    parent_dist = self.environment.get_object_dist(parent_id)
-                    if parent_id not in self.seen_list and parent_dist < self.seen_dist_dict.get(parent_id, math.inf):
-                        distance_dict[parent_id] = parent_dist
+                    parent_bb_size = self.environment.get_object_bb_size(parent_id)
+                    if parent_id not in self.seen_list and parent_bb_size > self.seen_bb_size_dict.get(parent_id, 1.0):
+                        k_dict[parent_id] = 1- (self.seen_bb_size_dict.get(target_ids[0], 1.0)/parent_bb_size)
+                        self.seen_bb_size_dict[parent_id] = parent_bb_size
                         reward_dict[parent_id] = self.target_parents[parent_type]
         if len(reward_dict) != 0:
             v = list(reward_dict.values())
@@ -169,13 +170,12 @@ class BasicEpisode(Episode):
             reward = max(v)           #pick one with greatest reward if multiple in scene
             max_reward = max(v)
             best_parent_obj = k[v.index(reward)]
-            dist = distance_dict[best_parent_obj]
-            if (dist <= 1.0):
+            k_factor = k_dict[best_parent_obj]
+            if (self.environment.object_is_visible(best_parent_obj)):
                 self.seen_list.append(best_parent_obj)
             else:
-                reward = reward*max(((-0.15*(dist-1))+1), 0.0)
-                self.seen_dist_dict[best_parent_obj] = dist
-                print(best_parent_obj, reward)
+                reward = max_reward*k_factor
+                print("Parent", best_parent_obj, reward)
         return reward
 
     def _new_episode(

@@ -204,8 +204,8 @@ def parse_arguments():
     parser.add_argument(
         "--offline_data_dir",
         type=str,
-        #default="./data/thor_v1_offline_data", #thor_offline_data
-        default="/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v1_offline_data/", #thor_offline_data
+        default="./data/thor_v1_offline_data", #thor_offline_data
+        #default="/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v1_offline_data/", #thor_offline_data
         help="where dataset is stored.",
     )
     parser.add_argument(

@@ -69,20 +69,16 @@ class Environment:
 
         return self.controller.object_is_visible(objId)
     
-    def get_object_dist(self, objId):
+    def get_object_bb_size(self, objId):
         if not self.use_offline_controller:
             keys = self.last_event.class_detections2D.keys()
             if(objId in keys):
-                depth_image = self.event.depth_frame
                 x1, y1, x2, y2 = self.last_event.class_detections2D[objId][0]
-                crop = depth_image[y1:y2,x1:x2]
-                if (crop.size == 0):
-                    return math.inf
-                box_based_avg_depth = np.mean(crop)
-                return box_based_avg_depth
+                box_area = (y2-y1)*(x2-x1)
+                return box_area
             else:
-                return math.inf
-        return self.controller.get_object_dist(objId)
+                return 1.0
+        return self.controller.get_object_bb_size(objId)
 
     def objType_is_visible(self, objType):
         return self.controller.objType_is_visible(objType)

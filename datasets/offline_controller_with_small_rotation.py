@@ -837,7 +837,7 @@ class OfflineControllerWithSmallRotation(BaseController):
             x1, y1, x2, y2 = self.get_objbb()[object_id][0:4]
             box_area = (y2-y1)*(x2-x1)
             return box_area
-        return 1.0
+        return 0.0
 
     #mark1
     def objType_is_visible(self, objType):

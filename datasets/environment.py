@@ -77,7 +77,7 @@ class Environment:
                 box_area = (y2-y1)*(x2-x1)
                 return box_area
             else:
-                return 1.0
+                return 0.0
         return self.controller.get_object_bb_size(objId)
 
     def objType_is_visible(self, objType):

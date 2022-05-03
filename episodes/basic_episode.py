@@ -45,6 +45,7 @@ class BasicEpisode(Episode):
         self.partial_reward = args.partial_reward
         self.seen_list = []
         self.seen_bb_size_dict = {}
+        self.seen_bb_init_size_dict = {}
         if args.eval:
             random.seed(args.seed)
         self.room = None
@@ -120,6 +121,7 @@ class BasicEpisode(Episode):
                     break
             self.seen_list = []
             self.seen_bb_size_dict = {}
+            self.seen_bb_init_size_dict = {}
 
             if args.vis:
                 print("Success:", action_was_successful)
@@ -149,9 +151,10 @@ class BasicEpisode(Episode):
         if self.target_object is not None:
             target_ids = self.environment.find_id(self.target_object)
             target_bb_size = self.environment.get_object_bb_size(target_ids[0])
-            if target_bb_size > self.seen_bb_size_dict.get(target_ids[0], 1.0):
-                reward = 0.1*GOAL_SUCCESS_REWARD*(1-(self.seen_bb_size_dict.get(target_ids[0], 1.0)/target_bb_size))
+            if target_bb_size > self.seen_bb_size_dict.get(target_ids[0], 0.0):
+                self.seen_bb_init_size_dict.setdefault(target_ids[0], target_bb_size)
                 self.seen_bb_size_dict[target_ids[0]] = target_bb_size
+                reward = 0.1*GOAL_SUCCESS_REWARD*(1-math.sqrt(self.seen_bb_init_size_dict.get(target_ids[0])/target_bb_size))
                 print("Target ", self.target_object, target_ids[0], target_bb_size, reward)
                 return reward
 
@@ -160,9 +163,10 @@ class BasicEpisode(Episode):
                 parent_ids = self.environment.find_id(parent_type)
                 for parent_id in parent_ids:
                     parent_bb_size = self.environment.get_object_bb_size(parent_id)
-                    if parent_id not in self.seen_list and parent_bb_size > self.seen_bb_size_dict.get(parent_id, 1.0):
-                        k_dict[parent_id] = 1- (self.seen_bb_size_dict.get(target_ids[0], 1.0)/parent_bb_size)
+                    if parent_id not in self.seen_list and parent_bb_size > self.seen_bb_size_dict.get(parent_id, 0.0):
+                        self.seen_bb_init_size_dict.setdefault(parent_id, parent_bb_size)
                         self.seen_bb_size_dict[parent_id] = parent_bb_size
+                        k_dict[parent_id] = 1- math.sqrt(self.seen_bb_init_size_dict.get(parent_id)/parent_bb_size)
                         reward_dict[parent_id] = self.target_parents[parent_type]
         if len(reward_dict) != 0:
             v = list(reward_dict.values())

@@ -68,13 +68,13 @@ class GCN(torch.nn.Module):
 
         self.dropout = nn.Dropout(p=args.dropout_rate)
 
-        n = 83
-        self.n = n
-
         # get and normalize adjacency matrix.
         A_raw = torch.load("./data/gcn/adjmat.dat")
         A = normalize_adj(A_raw).tocsr().toarray()
         self.A = torch.nn.Parameter(torch.Tensor(A))
+
+        n = int(A.shape[0])
+        self.n = n
 
         # last layer of resnet18.
         resnet18 = models.resnet18(pretrained=True)

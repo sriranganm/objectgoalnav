@@ -16,7 +16,7 @@ from utils.net_util import ScalarMeanTracker
 from runners import nonadaptivea3c_val, savn_val
 
 
-def main_eval(args, create_shared_model, init_agent):
+def main_eval(args, create_shared_model, init_agent, repeat=False):
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
     random.seed(args.seed)
@@ -110,9 +110,10 @@ def main_eval(args, create_shared_model, init_agent):
     with open(args.results_json, "w") as fp:
         json.dump(tracked_means, fp, sort_keys=True, indent=4)
 
-    with open('all_data_'+args.results_json, "a+") as f:
-        json.dump(args.load_model, f)
-        json.dump(tracked_means, f, sort_keys=True, indent=4)
+    if not repeat:
+        with open('all_data_'+args.results_json, "a+") as f:
+            json.dump(args.load_model, f)
+            json.dump(tracked_means, f, sort_keys=True, indent=4)
     
     if(args.room_results):
         with open('all_data_ba_'+args.results_json, "a+") as f:

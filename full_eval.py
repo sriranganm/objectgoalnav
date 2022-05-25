@@ -7,6 +7,7 @@ from utils.class_finder import model_class, agent_class
 from main_eval import main_eval
 from tqdm import tqdm
 from tabulate import tabulate
+from statistics import mean, pstdev
 
 from tensorboardX import SummaryWriter
 
@@ -50,20 +51,31 @@ def main():
 
     args.test_or_val = "test"
     args.load_model = best_model_on_val
-    main_eval(args, create_shared_model, init_agent)
+    sr1_list, sr5_list, spl1_list, spl5_list = [],[],[],[]
+    for i in tqdm(range(5), desc="Statistics."):
+        main_eval(args, create_shared_model, init_agent, repeat = True)
 
-    with open(args.results_json, "r") as f:
-        results = json.load(f)
+        with open(args.results_json, "r") as f:
+            results = json.load(f)
+        sr1_list.append(results["GreaterThan/1/success"])
+        sr5_list.append(results["GreaterThan/5/success"])
+        spl1_list.append(results["GreaterThan/1/spl"])
+        spl5_list.append(results["GreaterThan/5/spl"])
+    
+    mean_sr1, std_sr1 = mean(sr1_list), pstdev(sr1_list)
+    mean_sr5, std_sr5 = mean(sr5_list), pstdev(sr5_list)
+    mean_spl1, std_spl1 = mean(spl1_list), pstdev(spl1_list)
+    mean_spl5, std_spl5 = mean(spl5_list), pstdev(spl5_list)
 
     print(
         tabulate(
             [
-                ["SPL >= 1:", results["GreaterThan/1/spl"]],
-                ["Success >= 1:", results["GreaterThan/1/success"]],
-                ["SPL >= 5:", results["GreaterThan/5/spl"]],
-                ["Success >= 5:", results["GreaterThan/5/success"]],
+                ["SPL >= 1:", mean_spl1, std_spl1],
+                ["Success >= 1:", mean_sr1, std_sr1],
+                ["SPL >= 5:", mean_spl5, std_spl5],
+                ["Success >= 5:", mean_sr5, std_sr5],
             ],
-            headers=["Metric", "Result"],
+            headers=["Metric", "Mean", "Std"],
             tablefmt="orgtbl",
         )
     )

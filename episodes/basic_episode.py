@@ -154,7 +154,7 @@ class BasicEpisode(Episode):
             if target_bb_size > self.seen_bb_size_dict.get(target_ids[0], 0.0):
                 self.seen_bb_init_size_dict.setdefault(target_ids[0], target_bb_size)
                 self.seen_bb_size_dict[target_ids[0]] = target_bb_size
-                reward = 0.1*GOAL_SUCCESS_REWARD*(1-math.sqrt(self.seen_bb_init_size_dict.get(target_ids[0])/target_bb_size))
+                reward = GOAL_SUCCESS_REWARD*(1-math.sqrt(self.seen_bb_init_size_dict.get(target_ids[0])/target_bb_size))
                 print("Target ", self.target_object, target_ids[0], target_bb_size, reward)
                 return reward
 
@@ -167,7 +167,7 @@ class BasicEpisode(Episode):
                         self.seen_bb_init_size_dict.setdefault(parent_id, parent_bb_size)
                         self.seen_bb_size_dict[parent_id] = parent_bb_size
                         k_dict[parent_id] = 1- math.sqrt(self.seen_bb_init_size_dict.get(parent_id)/parent_bb_size)
-                        reward_dict[parent_id] = self.target_parents[parent_type]
+                        reward_dict[parent_id] = self.target_parents[parent_type]/0.1
         if len(reward_dict) != 0:
             v = list(reward_dict.values())
             k = list(reward_dict.keys())

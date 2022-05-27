@@ -8,6 +8,7 @@ from main_eval import main_eval
 from tqdm import tqdm
 from tabulate import tabulate
 from statistics import mean, pstdev
+import pandas as pd
 
 from tensorboardX import SummaryWriter
 
@@ -70,10 +71,10 @@ def main():
     print(
         tabulate(
             [
-                ["SPL >= 1:", mean_spl1, std_spl1],
-                ["Success >= 1:", mean_sr1, std_sr1],
-                ["SPL >= 5:", mean_spl5, std_spl5],
-                ["Success >= 5:", mean_sr5, std_sr5],
+                ["SPL >= 1:", 100*mean_spl1, 100*std_spl1],
+                ["Success >= 1:", 100*mean_sr1, 100*std_sr1],
+                ["SPL >= 5:", 100*mean_spl5, 100*std_spl5],
+                ["Success >= 5:", 100*mean_sr5, 100*std_sr5],
             ],
             headers=["Metric", "Mean", "Std"],
             tablefmt="orgtbl",
@@ -82,6 +83,14 @@ def main():
 
     print("Best model:", args.load_model)
 
+    results_dict = {
+                    "Metric": ["SPL >= 1:", "Success >= 1:", "SPL >= 5:", "Success >= 5:"],
+                    "Mean": [mean_spl1, mean_sr1, mean_spl5, mean_sr5],
+                    "Std": [std_spl1, std_sr1, std_spl5, std_sr5]
+                   }
+
+    df = pd.DataFrame(results_dict, columns = ['Metric', 'Mean', 'Std'])
+    df.to_csv('{}.csv'.format(os.path.splitext(args.results_json)[0]), index=False)
 
 if __name__ == "__main__":
     main()

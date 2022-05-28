@@ -150,7 +150,7 @@ class BasicEpisode(Episode):
             target_ids = self.environment.find_id(self.target_object)
             target_dist = self.environment.get_object_dist(target_ids[0])
             if target_dist < self.seen_dist_dict.get(target_ids[0], math.inf):
-                reward = 0.1*GOAL_SUCCESS_REWARD*max(((-0.15*(target_dist-1))+1), 0.0)
+                reward = GOAL_SUCCESS_REWARD*max(((-0.15*(target_dist-1))+1), 0.0)
                 self.seen_dist_dict[target_ids[0]] = target_dist
                 print(self.target_object, target_ids[0], reward)
                 return reward
@@ -162,7 +162,7 @@ class BasicEpisode(Episode):
                     parent_dist = self.environment.get_object_dist(parent_id)
                     if parent_id not in self.seen_list and parent_dist < self.seen_dist_dict.get(parent_id, math.inf):
                         distance_dict[parent_id] = parent_dist
-                        reward_dict[parent_id] = self.target_parents[parent_type]
+                        reward_dict[parent_id] = self.target_parents[parent_type]/0.1
         if len(reward_dict) != 0:
             v = list(reward_dict.values())
             k = list(reward_dict.keys())

@@ -8,6 +8,8 @@ import time
 import random
 import os
 import platform
+import math
+import numpy as np
 
 try:
     from queue import Queue
@@ -827,6 +829,15 @@ class OfflineControllerWithSmallRotation(BaseController):
             return objId in visible_objects
         else:
             return str(self.state) in self.metadata[objId]
+
+    def get_object_bb_size(self, objId):
+        keys = list(self.get_objbb().keys())
+        object_id = objId.split('|')[0]
+        if(object_id in keys):
+            x1, y1, x2, y2 = self.get_objbb()[object_id][0:4]
+            box_area = (y2-y1)*(x2-x1)
+            return box_area
+        return 0.0
 
     #mark1
     def objType_is_visible(self, objType):

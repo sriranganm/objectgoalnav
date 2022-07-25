@@ -142,6 +142,22 @@ class BasicEpisode(Episode):
         )
 
     def get_partial_reward(self):
+        reward = STEP_PENALTY
+        reward_dict = {}
+        if self.target_parents is not None:
+            for parent_type in self.target_parents:
+                parent_ids = self.environment.find_id(parent_type)
+                for parent_id in parent_ids:
+                    if self.environment.object_is_visible(parent_id) and parent_id not in self.seen_list:
+                        reward_dict[parent_id] = self.target_parents[parent_type]
+        if len(reward_dict) != 0:
+            v = list(reward_dict.values())
+            k = list(reward_dict.keys())
+            reward = max(v)
+            self.seen_list.append(k[v.index(reward)])
+        return reward
+
+    def get_partial_reward_dense_bbox(self):
         """ get partial reward if parent object is seen for the first time"""
         reward = STEP_PENALTY
         reward_dict = {}

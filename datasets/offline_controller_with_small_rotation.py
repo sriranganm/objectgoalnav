@@ -839,6 +839,19 @@ class OfflineControllerWithSmallRotation(BaseController):
             return box_area
         return 0.0
 
+    def get_object_dist(self, objId):
+        keys = list(self.get_objbb().keys())
+        object_id = objId.split('|')[0]
+        if(object_id in keys):
+            depth_frame = self.depth[str(self.state)]
+            x1, y1, x2, y2 = self.get_objbb()[object_id][0:4]
+            crop = depth_frame[y1:y2,x1:x2]
+            if (crop.size == 0):
+                return math.inf
+            box_based_avg_depth = np.mean(crop)/1000
+            return box_based_avg_depth
+        return math.inf
+
     #mark1
     def objType_is_visible(self, objType):
         if self.using_raw_metadata:

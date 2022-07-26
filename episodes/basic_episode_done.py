@@ -96,8 +96,12 @@ class BasicEpisode(Episode):
                     self.failed_action_count += 1
 
                 # added partial reward
-                if self.partial_reward:
+                if self.partial_reward is 'sparse':
                     reward = self.get_partial_reward()
+                elif self.partial_reward is 'dense_bbox':
+                    reward = self.get_partial_reward_dense_bbox()
+                elif self.partial_reward is 'dense_depth':
+                    reward = self.get_partial_reward_dense_depth()
         else:
             self.scene_states.append(self.environment.controller.state)
 
@@ -112,7 +116,7 @@ class BasicEpisode(Episode):
                     reward = GOAL_SUCCESS_REWARD
                     done = True
                     action_was_successful = True
-                    if self.partial_reward:
+                    if self.partial_reward is not None:
                         self.seen_list = []
                         reward += self.get_partial_reward()
                     break

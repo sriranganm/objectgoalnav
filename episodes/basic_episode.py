@@ -46,6 +46,7 @@ class BasicEpisode(Episode):
         self.seen_list = []
         self.seen_bb_size_dict = {}
         self.seen_bb_init_size_dict = {}
+        self.seen_dist_dict = {}
         if args.eval:
             random.seed(args.seed)
         self.room = None
@@ -100,8 +101,12 @@ class BasicEpisode(Episode):
                 else:
                     self.failed_action_count += 1
                 # added partial reward
-                if self.partial_reward:
+                if self.partial_reward == "sparse":
                     reward = self.get_partial_reward()
+                elif self.partial_reward == "dense_bbox":
+                    reward = self.get_partial_reward_dense_bbox()
+                elif self.partial_reward == "dense_depth":
+                    reward = self.get_partial_reward_dense_depth()
         else:
             self.scene_states.append(self.environment.controller.state)
 
@@ -114,14 +119,16 @@ class BasicEpisode(Episode):
                     reward = GOAL_SUCCESS_REWARD
                     done = True
                     action_was_successful = True
-                    if self.partial_reward:
+                    if self.partial_reward is not None:
                         self.seen_list = []
                         self.seen_bb_size_dict = {}
+                        self.seen_dist_dict = {}
                         reward += self.get_partial_reward()
                     break
             self.seen_list = []
             self.seen_bb_size_dict = {}
             self.seen_bb_init_size_dict = {}
+            self.seen_dist_dict = {}
 
             if args.vis:
                 print("Success:", action_was_successful)

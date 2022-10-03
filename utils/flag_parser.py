@@ -204,14 +204,13 @@ def parse_arguments():
     parser.add_argument(
         "--offline_data_dir",
         type=str,
-        default="./data/thor_v1_offline_data", #thor_offline_data
-        #default="/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v1_offline_data/", #thor_offline_data
+        default="./data/thor_v3_offline_data", #thor_offline_data
         help="where dataset is stored.",
     )
     parser.add_argument(
         "--glove_dir",
         type=str,
-        default="./data/thor_glove/glove_thorv1_300.hdf5",
+        default="./data/thor_glove/glove_thorv3_300.hdf5",
         help="where the glove files are stored.",
     )
     parser.add_argument(

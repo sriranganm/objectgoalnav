@@ -1,5 +1,5 @@
 """
-Parses through all the subject-relation-object relationships in Visual Genome and counts relationship between a given object from iThor v1.0.1, and its subjects. Outputs the following files/folders:
+Parses through all the subject-relation-object relationships in Visual Genome and counts relationship between a given object from iThor v3.0.5, and its subjects. Outputs the following files/folders:
 
 top_subject_relationships/ - folder containing the connectivity of each object in the KG with its neighbors
 
@@ -44,7 +44,7 @@ def main(args):
     
     subjects_dir = ensuredirs('{}/subjects/'.format(args.data_dir))
 
-    with open('{}/thor_v1_objects.txt'.format(args.data_dir)) as f:
+    with open('{}/thor_v3_objects.txt'.format(args.data_dir)) as f:
         obj_list = f.readlines()
     
     obj_list_clean = list(map(lambda s: s.strip().lower(), obj_list))

@@ -30,8 +30,10 @@ def main(args):
 
     if args.weighted:
         torch.save(adjacency, "{}/adjmat_w.dat".format(args.data_dir))
+        torch.save(adjacency, "data/gcn/adjmat_w.dat".format(args.data_dir))
     else:
         torch.save(adjacency, "{}/adjmat.dat".format(args.data_dir))
+        torch.save(adjacency, "data/gcn/adjmat.dat".format(args.data_dir))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

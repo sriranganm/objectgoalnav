@@ -824,10 +824,12 @@ class OfflineControllerWithSmallRotation(BaseController):
 
     def object_is_visible(self, objId):
         if self.using_raw_metadata:
+            #print( "If Path")
             objects = self.metadata[str(self.state)]["objects"]
             visible_objects = [o["objectId"] for o in objects if o["visible"]]
             return objId in visible_objects
         else:
+            #print("*** Scene Name ***", self.scene_name)
             return str(self.state) in self.metadata[objId]
 
     def get_object_bb_size(self, objId):

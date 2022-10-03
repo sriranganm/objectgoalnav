@@ -10,6 +10,7 @@ trained_models*/*
 *.log
 *.csv
 kg_prep/kg_data/thor_v1_objects.txt
+kg_prep/kg_data/thor_v3_objects.txt
 kg_prep/kg_data/relationships.json
 kg_prep/kg_data/relationship_alias.txt
 kg_prep/verify_files.py

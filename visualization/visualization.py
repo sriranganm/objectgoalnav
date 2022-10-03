@@ -197,7 +197,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
 
-    obj_file = 'all_objects_v1.txt'
+    obj_file = '../kg_prep/kg_data/all_objects.txt'
     obj_list, total_list = data_loader(obj_file, args.actionList)
     c2p = json.load(open('c2p_top3.json','r'))
 

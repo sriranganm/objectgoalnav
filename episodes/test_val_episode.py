@@ -13,7 +13,7 @@ import sys
 c2p_prob = json.load(open("./data/c2p_prob.json"))
 rooms = ['Kitchen', 'Living_Room', 'Bedroom', 'Bathroom']
 args = flag_parser.parse_arguments()
-metadata_dir = "/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v1_offline_data/thor_v1_offline_data/"
+metadata_dir = "/mnt/cogrob_shared/users/smadhavan/MJOLNIR/data/thor_v3_offline_data/thor_v3_offline_data/"
 
 
 import re

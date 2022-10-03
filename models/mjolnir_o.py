@@ -33,6 +33,7 @@ class MJOLNIR_O(torch.nn.Module):
         # get and normalize adjacency matrix.
         np.seterr(divide='ignore')
         A_raw = torch.load("./data/gcn/adjmat.dat")
+        print(A_raw.shape)
         A = normalize_adj(A_raw).tocsr().toarray()
         self.A = torch.nn.Parameter(torch.Tensor(A))
 
@@ -73,15 +74,17 @@ class MJOLNIR_O(torch.nn.Module):
             self.objects = [o.strip() for o in objects]
         all_glove = torch.zeros(n, 300)
         glove = Glove(args.glove_file)
+        #import pdb
+        #pdb.set_trace()
         for i in range(n):
             all_glove[i, :] = torch.Tensor(glove.glove_embeddings[self.objects[i]][:])
 
         self.all_glove = nn.Parameter(all_glove)
         self.all_glove.requires_grad = False
 
-        self.W0 = nn.Linear(401, 401, bias=False)
-        self.W1 = nn.Linear(401, 401, bias=False)
-        self.W2 = nn.Linear(401, 5, bias=False)
+        self.W0 = nn.Linear(300+self.n, 300+self.n, bias=False)
+        self.W1 = nn.Linear(300+self.n, 300+self.n, bias=False)
+        self.W2 = nn.Linear(300 + self.n, 5, bias=False)
         self.W3 = nn.Linear(10, 1, bias=False)
 
         self.final_mapping = nn.Linear(n, 512)

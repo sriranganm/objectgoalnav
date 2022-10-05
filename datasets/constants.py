@@ -16,7 +16,7 @@ LIVING_ROOM_OBJECT_CLASS_LIST = [
     "ArmChair",
 ]
 
-BEDROOM_OBJECT_CLASS_LIST = ["Blinds", "DeskLamp", "Pillow", "AlarmClock", "CD"]
+BEDROOM_OBJECT_CLASS_LIST = ["HousePlant", "DeskLamp", "Pillow", "AlarmClock", "CD"]
 
 BATHROOM_OBJECT_CLASS_LIST = ["Mirror", "ToiletPaper", "SoapBar", "Towel", "SprayBottle"]
 

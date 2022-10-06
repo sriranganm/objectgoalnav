@@ -1,0 +1,904 @@
+{
+   "Kitchen": {
+      "Book": {
+         "CounterTop": 1.0
+      },
+      "Bottle": {
+         "Shelf": 0.29,
+         "CounterTop": 0.43,
+         "DiningTable": 0.29
+      },
+      "Knife": {
+         "Drawer": 0.17,
+         "CounterTop": 0.6,
+         "Sink": 0.13,
+         "DiningTable": 0.1
+      },
+      "Bread": {
+         "CounterTop": 0.7,
+         "DiningTable": 0.3
+      },
+      "Fork": {
+         "Drawer": 0.17,
+         "CounterTop": 0.6,
+         "DiningTable": 0.07,
+         "Sink": 0.17
+      },
+      "Potato": {
+         "CounterTop": 0.6,
+         "Sink": 0.07,
+         "Fridge": 0.07,
+         "DiningTable": 0.27
+      },
+      "HousePlant": {
+         "CounterTop": 0.82,
+         "DiningTable": 0.18
+      },
+      "Toaster": {
+         "CounterTop": 0.9,
+         "DiningTable": 0.1
+      },
+      "SoapBottle": {
+         "CounterTop": 0.97,
+         "Cabinet": 0.03
+      },
+      "Kettle": {
+         "CounterTop": 0.67,
+         "Cabinet": 0.07,
+         "DiningTable": 0.07,
+         "StoveBurner": 0.2
+      },
+      "Pan": {
+         "CounterTop": 0.36,
+         "Cabinet": 0.11,
+         "DiningTable": 0.06,
+         "StoveBurner": 0.47
+      },
+      "Plate": {
+         "Cabinet": 0.17,
+         "CounterTop": 0.5,
+         "Sink": 0.1,
+         "DiningTable": 0.23
+      },
+      "Tomato": {
+         "CounterTop": 0.42,
+         "Fridge": 0.19,
+         "DiningTable": 0.19,
+         "Plate": 0.03,
+         "Sink": 0.16
+      },
+      "Vase": {
+         "Shelf": 0.72,
+         "Floor": 0.11,
+         "CounterTop": 0.17
+      },
+      "GarbageCan": {
+         "Floor": 1.0
+      },
+      "Egg": {
+         "Fridge": 0.55,
+         "CounterTop": 0.19,
+         "Sink": 0.23,
+         "Floor": 0.03
+      },
+      "CreditCard": {
+         "CounterTop": 1.0
+      },
+      "WineBottle": {
+         "Cabinet": 0.1,
+         "CounterTop": 0.5,
+         "Fridge": 0.1,
+         "DiningTable": 0.3
+      },
+      "Pot": {
+         "CounterTop": 0.42,
+         "StoveBurner": 0.32,
+         "Cabinet": 0.1,
+         "DiningTable": 0.13,
+         "Sink": 0.03
+      },
+      "Spatula": {
+         "CounterTop": 0.87,
+         "Sink": 0.03,
+         "StoveBurner": 0.03,
+         "Pot": 0.03,
+         "Drawer": 0.03
+      },
+      "PaperTowelRoll": {
+         "CounterTop": 1.0
+      },
+      "Cup": {
+         "Cabinet": 0.2,
+         "CounterTop": 0.53,
+         "Sink": 0.1,
+         "DiningTable": 0.17
+      },
+      "Fridge": {
+         "Floor": 1.0
+      },
+      "CoffeeMachine": {
+         "CounterTop": 0.93,
+         "DiningTable": 0.07
+      },
+      "Bowl": {
+         "CounterTop": 0.6,
+         "DiningTable": 0.3,
+         "Cabinet": 0.1
+      },
+      "SaltShaker": {
+         "CounterTop": 0.9,
+         "DiningTable": 0.07,
+         "SideTable": 0.03
+      },
+      "PepperShaker": {
+         "CounterTop": 0.9,
+         "DiningTable": 0.07,
+         "SideTable": 0.03
+      },
+      "Lettuce": {
+         "CounterTop": 0.32,
+         "Fridge": 0.26,
+         "Sink": 0.26,
+         "DiningTable": 0.13,
+         "Floor": 0.03
+      },
+      "ButterKnife": {
+         "CounterTop": 0.86,
+         "Drawer": 0.07,
+         "DiningTable": 0.03,
+         "Sink": 0.03
+      },
+      "Apple": {
+         "CounterTop": 0.53,
+         "Fridge": 0.17,
+         "Sink": 0.1,
+         "DiningTable": 0.2
+      },
+      "DishSponge": {
+         "Sink": 0.47,
+         "CounterTop": 0.53
+      },
+      "Spoon": {
+         "Drawer": 0.16,
+         "CounterTop": 0.58,
+         "DiningTable": 0.06,
+         "Bowl": 0.03,
+         "Sink": 0.16
+      },
+      "Mug": {
+         "CounterTop": 0.35,
+         "Sink": 0.21,
+         "DiningTable": 0.21,
+         "CoffeeMachine": 0.12,
+         "Cabinet": 0.09,
+         "SideTable": 0.03
+      },
+      "ShelvingUnit": {
+         "Floor": 1.0
+      },
+      "Statue": {
+         "Shelf": 0.57,
+         "Floor": 0.29,
+         "CounterTop": 0.14
+      },
+      "Stool": {
+         "Floor": 1.0
+      },
+      "Window": {
+         "CounterTop": 0.67,
+         "DiningTable": 0.33
+      },
+      "Cabinet": {
+         "Floor": 0.88,
+         "Cabinet": 0.12
+      },
+      "Ladle": {
+         "CounterTop": 0.82,
+         "DiningTable": 0.09,
+         "Drawer": 0.09
+      },
+      "Microwave": {
+         "CounterTop": 0.94,
+         "DiningTable": 0.06
+      },
+      "CellPhone": {
+         "CounterTop": 0.5,
+         "Shelf": 0.25,
+         "DiningTable": 0.25
+      },
+      "Chair": {
+         "Floor": 0.95,
+         "DiningTable": 0.05
+      },
+      "Faucet": {
+         "Sink": 0.35,
+         "CounterTop": 0.65
+      },
+      "SideTable": {
+         "Floor": 1.0
+      },
+      "Drawer": {
+         "Floor": 1.0
+      },
+      "DiningTable": {
+         "Floor": 0.95,
+         "Plate": 0.05
+      },
+      "CounterTop": {
+         "Plate": 0.12,
+         "Sink": 0.62,
+         "Cup": 0.12,
+         "Pan": 0.12
+      },
+      "Shelf": {
+         "Floor": 1.0
+      },
+      "Sink": {
+         "CounterTop": 1.0
+      },
+      "Pen": {
+         "CounterTop": 0.5,
+         "DiningTable": 0.5
+      },
+      "SprayBottle": {
+         "Cabinet": 1.0
+      },
+      "Pencil": {
+         "CounterTop": 0.5,
+         "DiningTable": 0.5
+      },
+      "GarbageBag": {
+         "Floor": 1.0
+      },
+      "Floor": {
+         "Cabinet": 1.0
+      },
+      "Safe": {
+         "Floor": 1.0
+      },
+      "AluminumFoil": {
+         "Shelf": 1.0
+      }
+   },
+   "Living_Room": {
+      "Book": {
+         "DiningTable": 0.2,
+         "Chair": 0.3,
+         "TVStand": 0.1,
+         "Dresser": 0.2,
+         "SideTable": 0.1,
+         "CoffeeTable": 0.1
+      },
+      "Box": {
+         "Floor": 0.44,
+         "SideTable": 0.06,
+         "CoffeeTable": 0.28,
+         "Shelf": 0.09,
+         "TVStand": 0.03,
+         "DiningTable": 0.09
+      },
+      "Curtains": {
+         "Floor": 1.0
+      },
+      "Statue": {
+         "SideTable": 0.21,
+         "Shelf": 0.43,
+         "CoffeeTable": 0.12,
+         "DiningTable": 0.09,
+         "TVStand": 0.02,
+         "Floor": 0.12,
+         "Dresser": 0.02
+      },
+      "Laptop": {
+         "DiningTable": 0.18,
+         "Chair": 0.06,
+         "ArmChair": 0.06,
+         "CoffeeTable": 0.29,
+         "Desk": 0.06,
+         "TVStand": 0.06,
+         "Sofa": 0.12,
+         "Floor": 0.06,
+         "Dresser": 0.09,
+         "SideTable": 0.03
+      },
+      "Television": {
+         "TVStand": 0.48,
+         "Dresser": 0.3,
+         "CoffeeTable": 0.13,
+         "Floor": 0.04,
+         "SideTable": 0.04
+      },
+      "HousePlant": {
+         "SideTable": 0.54,
+         "CoffeeTable": 0.17,
+         "DiningTable": 0.04,
+         "TVStand": 0.04,
+         "Shelf": 0.04,
+         "Dresser": 0.04,
+         "Stool": 0.08,
+         "Floor": 0.04
+      },
+      "TissueBox": {
+         "TVStand": 0.1,
+         "SideTable": 0.3,
+         "Dresser": 0.1,
+         "CoffeeTable": 0.3,
+         "Floor": 0.1,
+         "Desk": 0.1
+      },
+      "CreditCard": {
+         "DiningTable": 0.11,
+         "Chair": 0.03,
+         "CoffeeTable": 0.37,
+         "SideTable": 0.11,
+         "Desk": 0.06,
+         "TVStand": 0.11,
+         "Floor": 0.14,
+         "Dresser": 0.06
+      },
+      "Plate": {
+         "DiningTable": 0.75,
+         "Chair": 0.17,
+         "CoffeeTable": 0.08
+      },
+      "KeyChain": {
+         "SideTable": 0.22,
+         "TVStand": 0.08,
+         "ArmChair": 0.11,
+         "Desk": 0.03,
+         "DiningTable": 0.06,
+         "Floor": 0.17,
+         "Shelf": 0.03,
+         "CoffeeTable": 0.25,
+         "Dresser": 0.06
+      },
+      "GarbageCan": {
+         "Floor": 1.0
+      },
+      "FloorLamp": {
+         "Floor": 1.0
+      },
+      "Vase": {
+         "SideTable": 0.02,
+         "DiningTable": 0.12,
+         "Shelf": 0.63,
+         "Floor": 0.16,
+         "Dresser": 0.06,
+         "CoffeeTable": 0.02
+      },
+      "DeskLamp": {
+         "SideTable": 0.82,
+         "Desk": 0.06,
+         "Shelf": 0.06,
+         "Dresser": 0.06
+      },
+      "Pencil": {
+         "DiningTable": 0.4,
+         "Chair": 0.2,
+         "SideTable": 0.2,
+         "Desk": 0.2
+      },
+      "Pillow": {
+         "Sofa": 0.63,
+         "ArmChair": 0.16,
+         "Floor": 0.21
+      },
+      "Bowl": {
+         "CoffeeTable": 0.67,
+         "Chair": 0.17,
+         "DiningTable": 0.17
+      },
+      "RemoteControl": {
+         "SideTable": 0.14,
+         "CoffeeTable": 0.31,
+         "Sofa": 0.14,
+         "TVStand": 0.11,
+         "Dresser": 0.06,
+         "ArmChair": 0.06,
+         "Ottoman": 0.03,
+         "Floor": 0.17
+      },
+      "Watch": {
+         "SideTable": 0.31,
+         "TVStand": 0.19,
+         "CoffeeTable": 0.38,
+         "Dresser": 0.06,
+         "Shelf": 0.06
+      },
+      "Pen": {
+         "DiningTable": 0.17,
+         "Chair": 0.17,
+         "Dresser": 0.17,
+         "SideTable": 0.33,
+         "Desk": 0.17
+      },
+      "Newspaper": {
+         "DiningTable": 0.17,
+         "Chair": 0.04,
+         "Ottoman": 0.04,
+         "Floor": 0.21,
+         "Sofa": 0.25,
+         "Shelf": 0.12,
+         "SideTable": 0.12,
+         "ArmChair": 0.04
+      },
+      "SideTable": {
+         "Floor": 1.0
+      },
+      "ArmChair": {
+         "Floor": 1.0
+      },
+      "DiningTable": {
+         "Floor": 0.28,
+         "Chair": 0.72
+      },
+      "CoffeeTable": {
+         "Floor": 1.0
+      },
+      "Shelf": {
+         "Floor": 1.0
+      },
+      "TVStand": {
+         "Floor": 1.0
+      },
+      "Sofa": {
+         "Floor": 0.95,
+         "SideTable": 0.03,
+         "Chair": 0.03
+      },
+      "Chair": {
+         "Floor": 1.0
+      },
+      "WateringCan": {
+         "Floor": 0.8,
+         "Shelf": 0.2
+      },
+      "Boots": {
+         "Floor": 1.0
+      },
+      "CellPhone": {
+         "Chair": 0.11,
+         "DiningTable": 0.22,
+         "CoffeeTable": 0.22,
+         "Floor": 0.11,
+         "Dresser": 0.22,
+         "SideTable": 0.11
+      },
+      "Drawer": {
+         "Floor": 1.0
+      },
+      "Ottoman": {
+         "Floor": 1.0
+      },
+      "Desk": {
+         "Floor": 0.67,
+         "Chair": 0.33
+      },
+      "Window": {
+         "Floor": 1.0
+      },
+      "Safe": {
+         "Floor": 1.0
+      },
+      "Dresser": {
+         "Floor": 1.0
+      },
+      "Cabinet": {
+         "Floor": 1.0
+      },
+      "ShelvingUnit": {
+         "Floor": 1.0
+      },
+      "DogBed": {
+         "Floor": 1.0
+      },
+      "Mirror": {
+         "Floor": 1.0
+      },
+      "Painting": {
+         "Chair": 1.0
+      },
+      "Candle": {
+         "SideTable": 0.5,
+         "Floor": 0.17,
+         "DiningTable": 0.17,
+         "CoffeeTable": 0.17
+      },
+      "RoomDecor": {
+         "Floor": 1.0
+      },
+      "Stool": {
+         "Floor": 1.0
+      }
+   },
+   "Bedroom": {
+      "Book": {
+         "Bed": 0.07,
+         "Desk": 0.63,
+         "SideTable": 0.07,
+         "Dresser": 0.17,
+         "Chair": 0.03,
+         "Shelf": 0.03
+      },
+      "Box": {
+         "Floor": 0.83,
+         "Desk": 0.08,
+         "ShelvingUnit": 0.08
+      },
+      "Bed": {
+         "Floor": 1.0
+      },
+      "Laptop": {
+         "Bed": 0.13,
+         "Desk": 0.7,
+         "Dresser": 0.17
+      },
+      "CellPhone": {
+         "Bed": 0.06,
+         "Desk": 0.45,
+         "SideTable": 0.16,
+         "Dresser": 0.26,
+         "Shelf": 0.06
+      },
+      "BaseballBat": {
+         "Floor": 1.0
+      },
+      "DeskLamp": {
+         "Dresser": 0.08,
+         "SideTable": 0.42,
+         "Desk": 0.42,
+         "Shelf": 0.08
+      },
+      "BasketBall": {
+         "Floor": 1.0
+      },
+      "TissueBox": {
+         "Shelf": 0.5,
+         "Desk": 0.25,
+         "SideTable": 0.25
+      },
+      "CreditCard": {
+         "Desk": 0.57,
+         "SideTable": 0.17,
+         "Shelf": 0.1,
+         "Bowl": 0.03,
+         "Dresser": 0.13
+      },
+      "GarbageCan": {
+         "Floor": 1.0
+      },
+      "AlarmClock": {
+         "Dresser": 0.1,
+         "SideTable": 0.72,
+         "Shelf": 0.14,
+         "Desk": 0.03
+      },
+      "Pencil": {
+         "Desk": 0.69,
+         "SideTable": 0.03,
+         "Dresser": 0.24,
+         "Shelf": 0.03
+      },
+      "Boots": {
+         "Floor": 1.0
+      },
+      "Pillow": {
+         "Bed": 1.0
+      },
+      "KeyChain": {
+         "Desk": 0.53,
+         "Shelf": 0.1,
+         "SideTable": 0.3,
+         "Floor": 0.03,
+         "Dresser": 0.03
+      },
+      "Bowl": {
+         "Desk": 0.46,
+         "Shelf": 0.31,
+         "CounterTop": 0.08,
+         "Dresser": 0.08,
+         "SideTable": 0.08
+      },
+      "Watch": {
+         "Shelf": 0.5,
+         "Desk": 0.5
+      },
+      "CD": {
+         "Desk": 0.5,
+         "SideTable": 0.19,
+         "Shelf": 0.12,
+         "Drawer": 0.06,
+         "Dresser": 0.12
+      },
+      "Pen": {
+         "Desk": 0.73,
+         "SideTable": 0.03,
+         "Dresser": 0.2,
+         "Shelf": 0.03
+      },
+      "Chair": {
+         "Floor": 0.97,
+         "Desk": 0.03
+      },
+      "Mug": {
+         "Desk": 0.56,
+         "SideTable": 0.31,
+         "CounterTop": 0.06,
+         "Dresser": 0.06
+      },
+      "DogBed": {
+         "Floor": 1.0
+      },
+      "Drawer": {
+         "Floor": 1.0
+      },
+      "Dresser": {
+         "Floor": 1.0
+      },
+      "Statue": {
+         "Dresser": 0.67,
+         "Shelf": 0.33
+      },
+      "Desk": {
+         "Floor": 0.84,
+         "Chair": 0.12,
+         "Desk": 0.03
+      },
+      "HousePlant": {
+         "Shelf": 0.29,
+         "Desk": 0.14,
+         "ShelvingUnit": 0.14,
+         "Floor": 0.29,
+         "Dresser": 0.14
+      },
+      "TennisRacket": {
+         "Floor": 1.0
+      },
+      "TeddyBear": {
+         "Bed": 0.8,
+         "Floor": 0.2
+      },
+      "SideTable": {
+         "Floor": 1.0
+      },
+      "Safe": {
+         "Floor": 0.67,
+         "Cabinet": 0.17,
+         "Dresser": 0.17
+      },
+      "Vase": {
+         "Shelf": 1.0
+      },
+      "Cloth": {
+         "Floor": 1.0
+      },
+      "Window": {
+         "SideTable": 1.0
+      },
+      "Dumbbell": {
+         "Floor": 0.8,
+         "Desk": 0.2
+      },
+      "GarbageBag": {
+         "Floor": 1.0
+      },
+      "ShelvingUnit": {
+         "Floor": 1.0
+      },
+      "Shelf": {
+         "Floor": 0.93,
+         "Desk": 0.07
+      },
+      "LaundryHamper": {
+         "Floor": 1.0
+      },
+      "Television": {
+         "Shelf": 0.5,
+         "Dresser": 0.5
+      },
+      "RemoteControl": {
+         "Desk": 0.67,
+         "Dresser": 0.33
+      },
+      "Poster": {
+         "Shelf": 1.0
+      },
+      "Cabinet": {
+         "Floor": 0.85,
+         "Cabinet": 0.15
+      },
+      "ArmChair": {
+         "Floor": 1.0
+      },
+      "Mirror": {
+         "CounterTop": 0.5,
+         "Dresser": 0.5
+      },
+      "CoffeeTable": {
+         "Floor": 1.0
+      },
+      "TableTopDecor": {
+         "Desk": 1.0
+      },
+      "Desktop": {
+         "Desk": 1.0
+      },
+      "Painting": {
+         "Floor": 1.0
+      },
+      "Stool": {
+         "Floor": 1.0
+      },
+      "Footstool": {
+         "Floor": 1.0
+      },
+      "Sofa": {
+         "Floor": 1.0
+      },
+      "VacuumCleaner": {
+         "Floor": 1.0
+      },
+      "Floor": {
+         "GarbageCan": 1.0
+      }
+   },
+   "Bathroom": {
+      "Faucet": {
+         "Bathtub": 0.19,
+         "Sink": 0.48,
+         "CounterTop": 0.27,
+         "Floor": 0.06
+      },
+      "ShowerCurtain": {
+         "Bathtub": 0.62,
+         "Floor": 0.29,
+         "Sink": 0.1
+      },
+      "ShowerHead": {
+         "Bathtub": 0.1,
+         "Floor": 0.8,
+         "Shelf": 0.1
+      },
+      "Towel": {
+         "TowelHolder": 0.97,
+         "Floor": 0.03
+      },
+      "HandTowel": {
+         "HandTowelHolder": 0.97,
+         "CounterTop": 0.03
+      },
+      "Plunger": {
+         "Floor": 1.0
+      },
+      "SoapBar": {
+         "Bathtub": 0.26,
+         "Shelf": 0.13,
+         "CounterTop": 0.52,
+         "Cabinet": 0.03,
+         "Dresser": 0.03,
+         "Toilet": 0.03
+      },
+      "ToiletPaper": {
+         "Shelf": 0.06,
+         "Toilet": 0.35,
+         "ToiletPaperHanger": 0.05,
+         "Floor": 0.11,
+         "GarbageCan": 0.11,
+         "CounterTop": 0.2,
+         "Drawer": 0.02,
+         "Cabinet": 0.11,
+         "Bathtub": 0.02
+      },
+      "SoapBottle": {
+         "Sink": 0.07,
+         "CounterTop": 0.73,
+         "Shelf": 0.03,
+         "Bathtub": 0.03,
+         "SideTable": 0.1,
+         "Toilet": 0.03
+      },
+      "GarbageCan": {
+         "Floor": 1.0
+      },
+      "Cloth": {
+         "Bathtub": 0.27,
+         "Shelf": 0.07,
+         "CounterTop": 0.33,
+         "Toilet": 0.23,
+         "SideTable": 0.07,
+         "Cabinet": 0.03
+      },
+      "PaperTowelRoll": {
+         "SideTable": 0.25,
+         "Cabinet": 0.25,
+         "Toilet": 0.25,
+         "CounterTop": 0.25
+      },
+      "Candle": {
+         "Floor": 0.09,
+         "SideTable": 0.03,
+         "Bathtub": 0.19,
+         "Shelf": 0.09,
+         "Cabinet": 0.06,
+         "Toilet": 0.09,
+         "GarbageCan": 0.03,
+         "CounterTop": 0.38,
+         "Dresser": 0.03
+      },
+      "SprayBottle": {
+         "Floor": 0.06,
+         "SideTable": 0.09,
+         "Cabinet": 0.28,
+         "Shelf": 0.06,
+         "Toilet": 0.19,
+         "CounterTop": 0.28,
+         "Dresser": 0.03
+      },
+      "ScrubBrush": {
+         "Floor": 1.0
+      },
+      "DishSponge": {
+         "SideTable": 0.29,
+         "Cabinet": 0.14,
+         "Toilet": 0.29,
+         "Bathtub": 0.14,
+         "Floor": 0.14
+      },
+      "Toilet": {
+         "Floor": 1.0
+      },
+      "Sink": {
+         "Floor": 0.37,
+         "CounterTop": 0.63
+      },
+      "SideTable": {
+         "Floor": 1.0
+      },
+      "Cabinet": {
+         "Floor": 0.89,
+         "CounterTop": 0.11
+      },
+      "Bathtub": {
+         "Floor": 0.88,
+         "CounterTop": 0.12
+      },
+      "TissueBox": {
+         "Floor": 0.09,
+         "Cabinet": 0.09,
+         "Shelf": 0.27,
+         "SideTable": 0.18,
+         "CounterTop": 0.36
+      },
+      "Mirror": {
+         "CounterTop": 0.6,
+         "Sink": 0.4
+      },
+      "ShowerDoor": {
+         "Floor": 1.0
+      },
+      "ShowerGlass": {
+         "CounterTop": 0.1,
+         "Shelf": 0.1,
+         "Floor": 0.8
+      },
+      "CounterTop": {
+         "Sink": 0.75,
+         "Footstool": 0.25
+      },
+      "BathtubBasin": {
+         "Floor": 1.0
+      },
+      "Dresser": {
+         "Floor": 1.0
+      },
+      "Drawer": {
+         "Floor": 1.0
+      },
+      "HousePlant": {
+         "SideTable": 1.0
+      },
+      "Footstool": {
+         "Floor": 1.0
+      }
+   }
+}

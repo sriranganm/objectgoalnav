@@ -72,10 +72,10 @@ class MJOLNIR_O(torch.nn.Module):
         with open ("./data/gcn/objects.txt") as f:
             objects = f.readlines()
             self.objects = [o.strip() for o in objects]
+        assert len(self.objects) == n
+
         all_glove = torch.zeros(n, 300)
         glove = Glove(args.glove_file)
-        #import pdb
-        #pdb.set_trace()
         for i in range(n):
             all_glove[i, :] = torch.Tensor(glove.glove_embeddings[self.objects[i]][:])
 

@@ -108,13 +108,7 @@ python visualization.py --actionList ../saved_action_mjolnir_o_test.log
 ## Train
 
 ```bash
-python main.py \
-    --title mjolnir_train \
-    --model MJOLNIR_O \
-    --gpu-ids 0\
-    --workers 8
-    --vis False
-    --save-model-dir trained_models
+python main.py --title mjolnir_o_dense_bbox_thor_v3 --model MJOLNIR_O --gpu-ids 0 --workers 6 --vis False --save-model-dir tm_mjolnir_o_dense_bbox_thor_v3 --offline_data_dir /media/anwesan/HDD/Datasets/ai2thor_data/ithor3_offline_data --partial_reward dense_bbox
 ```
 Other model options are "SAVN" and "GCN"
 

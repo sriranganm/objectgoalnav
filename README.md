@@ -1,10 +1,11 @@
-# Learning hierarchical relationships for object-goal navigation
+# Role of reward shaping in object-goal navigation
 
-Yiding Qiu*, Anwesan Pal* and Henrik I. Christensen
+Srirangan Madhavan, Anwesan Pal and Henrik I. Christensen
 
-[Paper](https://arxiv.org/abs/2003.06749) | [Website](https://sites.google.com/eng.ucsd.edu/mjolnir) | [Video](https://www.youtube.com/watch?v=eCxWwohbOd8)
+[Paper](https://arxiv.org/abs/2207.08021) | [Website](https://sites.google.com/eng.ucsd.edu/mjolnir) | [Video](https://www.youtube.com/watch?v=eCxWwohbOd8)
 
-PyTorch implementation of our CoRL 2020 paper **Learning hierarchical relationships for object-goal navigation** in AI2-THOR environment. This implementation is modified based on [SAVN](https://github.com/allenai/savn).
+PyTorch implementation of CVPR 2022 Workshop paper **Role of reward shaping in object-goal
+navigation** in AI2-THOR environment. This implementation is en extension of [MJOLNIR](https://sites.google.com/eng.ucsd.edu/mjolnir).
 
 
 ## Prerequisite
@@ -22,10 +23,6 @@ conda activate mjolnir_env
 ```
 
 3. For the rest of dependencies, please run `pip install -r requirements.txt --ignore-installed`
-4. Clone the repository as:
-```
-    git clone https://github.com/cassieqiuyd/MJOLNIR.git
-```
 
 Note: Upon running any code the first time, the AI2-THOR 3D scenes will be downloaded (~500MB) to your home directory. 
 
@@ -135,10 +132,12 @@ cat mjolnir_o.json
 Please cite our work if you found this research useful for your work:
 
 ```bash
-@article{qiu2020learning,
-  title={Learning hierarchical relationships for object-goal navigation},
-  author={Qiu, Yiding and Pal, Anwesan and Christensen, Henrik I},
-  journal={arXiv preprint arXiv:2003.06749},
-  year={2020}
+@misc{madhavan2022role,
+      title={Role of reward shaping in object-goal navigation}, 
+      author={Srirangan Madhavan and Anwesan Pal and Henrik I. Christensen},
+      year={2022},
+      eprint={2207.08021},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
 }
 ```

@@ -2,7 +2,7 @@
 
 Srirangan Madhavan, Anwesan Pal and Henrik I. Christensen
 
-[Paper](https://arxiv.org/abs/2207.08021) | [Website](https://sites.google.com/eng.ucsd.edu/mjolnir) | [Video](https://www.youtube.com/watch?v=eCxWwohbOd8)
+[Paper](https://arxiv.org/abs/2207.08021)
 
 PyTorch implementation of CVPR 2022 Workshop paper **Role of reward shaping in object-goal
 navigation** in AI2-THOR environment. This implementation is en extension of [MJOLNIR](https://sites.google.com/eng.ucsd.edu/mjolnir).
